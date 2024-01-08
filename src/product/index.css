@@ -30,6 +30,14 @@
 
 #contents-box {
   padding: 16px;
+}
+
+#name {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#price {
   font-size: 16px;
   font-weight: 600;
 }

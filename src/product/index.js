@@ -2,38 +2,43 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./index.css";
+import { API_URL } from "../config/constants";
+import dayjs from "dayjs";
+
 function ProductPage() {
   const { id } = useParams();
-  const [product, setProducts] = useState(null);
+  const [product, setProduct] = useState(null);
   useEffect(function () {
     axios
-      .get(
-        `https://b3335d17-2931-4df5-bfd5-2bdf1dc87c65.mock.pstmn.io/products/${id}`
-      )
+      .get(`${API_URL}/products/${id}`)
       .then(function (result) {
-        setProducts(result.data);
+        setProduct(result.data.product);
       })
       .catch(function (error) {
         console.error(error);
       });
   }, []);
+
   if (product === null) {
-    return <h1> 상품 정보를 받고 있습니다...</h1>;
+    return <h1>상품 정보를 받고 있습니다...</h1>;
   }
+
   return (
     <div>
       <div id="image-box">
-        <img src={"/" + product.imageUrl} />
+        <img src={`${API_URL}/${product.imageUrl}`} />
       </div>
       <div id="profile-box">
         <img src="/images/icons/avatar.png" />
-        <span> {product.seller}</span>
+        <span>{product.seller}</span>
       </div>
       <div id="contents-box">
         <div id="name">{product.name}</div>
-        <div id="price"> {product.price}</div>
-        <div id="createdAt"> 2024년 01월 07일</div>
-        <div id="description"> {product.description}</div>
+        <div id="price">{product.price}원</div>
+        <div id="createdAt">
+          {dayjs(product.createdAt).format("YYYY년 MM월 DD일")}
+        </div>
+        <pre id="description">{product.description} </pre>
       </div>
     </div>
   );

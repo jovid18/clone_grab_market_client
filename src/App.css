@@ -15,19 +15,7 @@ body,
   height: 64px;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid grey;
-}
-
-#body {
-  height: 100vh;
-  width: 1024px;
-  margin: 0 auto;
-  padding-bottom: 24px;
-}
-
-#footer {
-  height: 200px;
-  background-color: rgb(230, 230, 230);
+  border-bottom: 1px solid gray;
 }
 
 #header-area {
@@ -41,4 +29,16 @@ body,
 #header-area img {
   width: 128px;
   height: 36px;
+}
+
+#body {
+  height: 100vh;
+  width: 1024px;
+  margin: 0 auto;
+  padding-bottom: 24px;
+}
+
+#footer {
+  height: 200px;
+  background-color: rgb(230, 230, 230);
 }
